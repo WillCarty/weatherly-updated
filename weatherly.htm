@@ -1,0 +1,440 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+
+    <link type="text/css" href="weatherly.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script>
+/* darksky request function*/
+    function darksky_Complete(result) {
+    
+    
+    console.log("Latitude: " + result.latitude);
+    console.log("Longitude: " + result.longitude);
+    console.log("Timezone: " + result.timezone);
+    console.log("\n\n");
+
+    
+   
+    console.log("It is currently " + result.currently.summary + ".");
+    console.log("\n\n")
+
+}
+/*google location request function*/
+function google_Complete(results){
+
+    console.log(results);
+}
+
+
+
+
+$(function() {
+
+    var request = {
+        url: "https://api.darksky.net/forecast/ed7be92607845014ac1b22c8b2dcb545/37.8267,-122.4233",
+        dataType: "jsonp",
+        success: darksky_Complete
+    };
+
+    $.ajax(request);
+
+var location ={
+    url:"https://maps.googleapis.com/maps/api/geocode/json?address=41465&key=AIzaSyBZfkXozgEve7U6AezGLYljEVMRR-EFUuo",
+    dataType:"jsonp",
+    success:google_Complete
+};
+$.ajax(location);
+
+});
+
+        
+        </script>
+</head>
+
+<body>
+    <form class="navbar-form navbar-top">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Zip Code">
+        </div>
+        <button type="button" class="btn btn-success" aria-label="Left Align">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+    </form>
+    <div class="container">
+        <div class="row">
+            <!--New Card Beginning-->
+            <div class="col-md-3 clearCard allCards">
+                <div class="row" style=" text-align:center">
+                    <h3>Test text!</h3>
+
+                </div>
+
+                <div class="row">
+                    <h1>
+                        71&degF
+                    </h1>
+                </div>
+                <div class="row" style="height:100px">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"><img src="http://ukweather.joanpujol.cat/images/weatherkey/mo_wsunny_01.png" alt="sun/clear" width=" 80px"
+                            height="80px"></div>
+                    <div class="col-md-4"></div>
+
+                </div>
+                <div class="row" style="height:87px; text-align:center">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <h2>Clear</h2>
+                    </div>
+                    <div class="col-md-4"></div>
+
+                </div>
+
+                <div class="row" style="height:40px"></div>
+                <div class="row" style="border-top:2px solid white">
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Min</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Rain Chance</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Max</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- Card Ending-->
+            <!--New Card Beginning-->
+            <div class="col-md-3 allCards rainCard">
+                <div class="row" style=" text-align:center">
+                    <h3>Test text!</h3>
+
+                </div>
+
+                <div class="row">
+                    <h1>
+                        71&degF
+                    </h1>
+                </div>
+                <div class="row" style="height:100px">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"><img src="http://www.clipartkid.com/images/214/thunderstorm-icon-clipart-best-bXtgN0-clipart.png" alt="sun/clear"
+                            width=" 80px" height="80px"></div>
+                    <div class="col-md-4"></div>
+
+                </div>
+                <div class="row" style="height:87px; text-align:center">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <h2>Rain</h2>
+                    </div>
+                    <div class="col-md-4"></div>
+
+                </div>
+
+                <div class="row" style="height:40px"></div>
+                <div class="row" style="border-top:2px solid white">
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Min</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Rain Chance</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Max</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- Card Ending-->
+            <!--New Card Beginning-->
+            <div class="col-md-3 snowCard allCards">
+                <div class="row" style=" text-align:center">
+                    <h3>Test text!</h3>
+
+                </div>
+
+                <div class="row">
+                    <h1>
+                        71&degF
+                    </h1>
+                </div>
+                <div class="row" style="height:100px">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"><img src="http://www.clker.com/cliparts/3/4/e/d/12284285361061964999sivvus_weather_symbols_5.svg.med.png"
+                            alt="sun/clear" width=" 80px" height="80px"></div>
+                    <div class="col-md-4"></div>
+
+                </div>
+                <div class="row" style="height:87px; text-align:center">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <h2>Snow</h2>
+                    </div>
+                    <div class="col-md-4"></div>
+
+                </div>
+
+                <div class="row" style="height:40px"></div>
+                <div class="row" style="border-top:2px solid white">
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Min</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Rain Chance</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Max</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- Card Ending-->
+            <!--New Card Beginning-->
+            <div class="col-md-3 cloudyCard allCards">
+                <div class="row" style=" text-align:center">
+                    <h3>Test text!</h3>
+
+                </div>
+
+                <div class="row">
+                    <h1>
+                        71&degF
+                    </h1>
+                </div>
+                <div class="row" style="height:100px">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"><img src="http://www.clipartkid.com/images/30/weather-symbols-clip-art-at-clker-com-vector-clip-art-online-z80WzV-clipart.png"
+                            alt="sun/clear" width=" 80px" height="80px"></div>
+                    <div class="col-md-4"></div>
+
+                </div>
+                <div class="row" style="height:87px; text-align:center">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">
+                        <h2>Overcast</h2>
+                    </div>
+                    <div class="col-md-3"></div>
+
+                </div>
+
+                <div class="row" style="height:40px"></div>
+                <div class="row" style="border-top:2px solid white">
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Min</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Rain Chance</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Max</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- Card Ending-->
+            <!--New Card Beginning-->
+            <div class="col-md-3 nightClearcard allCards">
+                <div class="row" style=" text-align:center">
+                    <h3>Test text!</h3>
+
+                </div>
+
+                <div class="row">
+                    <h1>
+                        71&degF
+                    </h1>
+                </div>
+                <div class="row" style="height:100px">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"><img src="http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Status-weather-clear-night-icon.png"
+                            alt="sun/clear" width=" 80px" height="80px"></div>
+                    <div class="col-md-4"></div>
+
+                </div>
+                <div class="row" style="height:87px; text-align:center">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <h2>Clear</h2>
+                    </div>
+                    <div class="col-md-4"></div>
+
+                </div>
+
+                <div class="row" style="height:40px"></div>
+                <div class="row" style="border-top:2px solid white">
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Min</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Rain Chance</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Max</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Ending-->
+            <!--New Card Beginning-->
+            <div class="col-md-3 nightSleetcard allCards">
+                <div class="row" style=" text-align:center">
+                    <h3>Test text!</h3>
+
+                </div>
+
+                <div class="row">
+                    <h1>
+                        71&degF
+                    </h1>
+                </div>
+                <div class="row" style="height:100px">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"><img src="http://www.clipartkid.com/images/170/sleet-clipart-size-of-sleeting-clip-art-VweVm9-clipart.png"
+                            alt="sun/clear" width=" 80px" height="80px"></div>
+                    <div class="col-md-4"></div>
+
+                </div>
+                <div class="row" style="height:87px; text-align:center">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <h2>Sleet</h2>
+                    </div>
+                    <div class="col-md-4"></div>
+
+                </div>
+
+                <div class="row" style="height:40px"></div>
+                <div class="row" style="border-top:2px solid white">
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>72&degF</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Min</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Rain Chance</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Max</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- Card Ending-->
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

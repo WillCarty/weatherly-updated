@@ -1,0 +1,18 @@
+testing 
+
+
+<div class="input-group">
+  <div class="input-group-btn">
+    <button type="button" class="btn btn-success" aria-label="Left Align">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+</button>
+  </div>
+  <input type="text" class="form-control" aria-label="...">
+</div>
+
+<div class="input-group">
+  <input type="text" class="form-control" aria-label="...">
+  <div class="input-group-btn">
+    <!-- Buttons -->
+  </div>
+</div>
