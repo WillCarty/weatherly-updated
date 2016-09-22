@@ -14,7 +14,9 @@ function darksky_Complete(result) {
 
     $(function () {
         var request = {
-            url: "https://api.darksky.net/forecast/f77b16737234e09531e914bc27eba71d/37.8267,-122.4233",
+            url: "https://api.darksky.net/forecast/f77b16737234e09531e914bc27eba71d/37.7305,-83.0361",
+                                                                                   
+            
             dataType: "jsonp",
             success: darksky_Complete
         }
@@ -30,7 +32,7 @@ function geocode_Complete(results){
 }
 $(function(){
 var location={
-            url:"https://maps.googleapis.com/maps/api/geocode/json?address=41465 &key=AIzaSyBZfkXozgEve7U6AezGLYljEVMRR-EFUuo",
+            url:"https://maps.googleapis.com/maps/api/geocode/json?address=41465&key=AIzaSyBZfkXozgEve7U6AezGLYljEVMRR-EFUuo",
             dataType:"jsonp",
             geocode_Complete
 

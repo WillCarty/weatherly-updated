@@ -34,9 +34,11 @@
 
 }
 /*google location request function*/
-function google_Complete(results){
+function google_Complete(location){
 
-    console.log(results);
+    console.log(location.results[0].geometry.location.lat);
+    console.log(location.results[0].geometry.location.lng);
+
 }
 
 
@@ -45,7 +47,7 @@ function google_Complete(results){
 $(function() {
 
     var request = {
-        url: "https://api.darksky.net/forecast/ed7be92607845014ac1b22c8b2dcb545/37.8267,-122.4233",
+        url: "https://api.darksky.net/forecast/ed7be92607845014ac1b22c8b2dcb545/37.7305,-83.0361",
         dataType: "jsonp",
         success: darksky_Complete
     };
@@ -53,14 +55,17 @@ $(function() {
     $.ajax(request);
 
 var location ={
-    url:"https://maps.googleapis.com/maps/api/geocode/json?address=41465&key=AIzaSyBZfkXozgEve7U6AezGLYljEVMRR-EFUuo",
-    dataType:"jsonp",
+    url:"https://maps.googleapis.com/maps/api/geocode/json?address="+zipCode+"&key=AIzaSyBZfkXozgEve7U6AezGLYljEVMRR-EFUuo",
+    dataType:"json",
     success:google_Complete
 };
 $.ajax(location);
 
 });
 
+
+ var zipCode=$("#zipcode").val();
+ console.log(zipCode);
         
         </script>
 </head>
@@ -68,9 +73,9 @@ $.ajax(location);
 <body>
     <form class="navbar-form navbar-top">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Zip Code">
+            <input type="text" id="zipcode" class="form-control" placeholder="Zip Code">
         </div>
-        <button type="button" class="btn btn-success" aria-label="Left Align">
+        <button type="button" class="btn btn-success" onclick="click, zipCode(), submit" aria-label="Left Align">
   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
     </form>
     <div class="container">

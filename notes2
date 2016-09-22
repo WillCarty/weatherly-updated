@@ -16,3 +16,42 @@ testing
     <!-- Buttons -->
   </div>
 </div>
+
+
+
+function geocode_Complete(results){
+    console.log(results.location.lat);
+    
+}
+$(function(){
+var location={
+            url:"https://maps.googleapis.com/maps/api/geocode/json?address=41465&key=AIzaSyBZfkXozgEve7U6AezGLYljEVMRR-EFUuo",
+            dataType:"jsonp",
+            geocode_Complete
+
+        }
+
+
+
+$.ajax(location);
+});
+        
+    
+function geocode_Complete(results){
+    console.log(results.location.lat);
+    
+}
+$(function(){
+var location={
+            url:"https://maps.googleapis.com/maps/api/geocode/json?address=41465&key=AIzaSyBZfkXozgEve7U6AezGLYljEVMRR-EFUuo",
+            dataType:"jsonp",
+            geocode_Complete
+
+        }
+
+
+
+$.ajax(location);
+});
+        
+    

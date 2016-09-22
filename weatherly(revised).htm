@@ -1,0 +1,139 @@
+<html>
+
+<head>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+</head>
+
+<body>
+    <script> 
+   
+   
+   //*******************Text input
+   
+
+  
+  
+    //address/lat and long recieved
+   function addressLookup_Complete(result) {
+            var latitude = result.results[0].geometry.location.lat;
+            var longitude = result.results[0].geometry.location.lng;
+            console.log("The lat and long is " + latitude + ", " + longitude);
+   }
+    
+//google lat and long
+   function addressLookup(city, state, address) {
+       // Create the address.
+            var addLocation = "";
+            if (address.length != 0) {
+                addLocation= address.trim();
+            }
+            else if (city.length != 0 && state != 0) {
+                addLocation = city.trim() + ", " + state;
+            }
+            else {
+                return; 
+
+            }
+
+
+  //compiling the url for
+    var googleTag = "https://maps.googleapis.com/maps/api/geocode/json?address=" + addLocation + "&key=AIzaSyBZfkXozgEve7U6AezGLYljEVMRR-EFUuo";
+
+            var request = {
+                url: googleTag,
+                success: addressLookup_Complete
+            };
+
+            $.ajax(request);
+   }
+   
+   var darkSky = "https://api.darksky.net/forecast/ed7be92607845014ac1b22c8b2dcb545/"+ latitude + longitude;;;;;;;
+   
+   
+   
+   
+   
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   //*******************Text input
+   function lookupLocation_click(){
+       var pcode=$("#address").val();
+       addressLookup("","", pcode);
+
+   }
+     //*******************Click event
+    $(function(){
+       $("#lookupLocation").on("click", lookupLocation_click);
+   
+    });
+
+
+ </script>
+    <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" id="address" placeholder="Enter Address or Zip"/>
+        </div>
+        <button type="submit" id="lookupLocation" class="btn btn-success">Get Weather</button>
+    </form>
+
+
+    </div>
+    </div>
+
+
+
+</body>
+
+
+
+
+
+
+</html>
