@@ -46,7 +46,7 @@ html>
         // ***************************
 
         function lookupLatLong_Complete(result) {
-            var latitude = location.results[0].geometry.location.lat;
+            var latitude = result[0].location.lat;
             var longitude = result[0].geometry.location.lng;
             console.log("The lat and long is " + latitude + ", " + longitude);
         }
@@ -69,7 +69,7 @@ html>
 
             var request = {
                 url: googleUrl,
-                success: addressLookup_Complete
+                success: lookupLatLong_Complete
             };
 
             $.ajax(request);

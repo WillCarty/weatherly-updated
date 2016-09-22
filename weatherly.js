@@ -1,44 +1,73 @@
 
 
-function darksky_Complete(result) {
-    console.log("Latitude " + result.latitude);
-    console.log("Longitude " + result.longitude);
-    console.log("Current Temperature " + result.currently.temperature);
-    console.log("Current Weather " + result.currently.summary);
-    var hour1 = (result.hourly.data[0]);
-    var time = new Date(result.currently.time * 1000);
-    console.log("Current time " + time);
 
-
-
-
-    $(function () {
-        var request = {
-            url: "https://api.darksky.net/forecast/f77b16737234e09531e914bc27eba71d/37.7305,-83.0361",
-                                                                                   
-            
-            dataType: "jsonp",
-            success: darksky_Complete
-        }
-        
-
-    });
-    $.ajax(request);
-};
-
-function geocode_Complete(results){
-    console.log(results.location.lat);
-    
+function addressLookup_Complete(result) {
+    var lat = result.results[0].geometry.location.lat;
+    var long = result.results[0].geometry.location.lng;
+    console.log("The lat and long is " + lat + ", " + long);
+    getWeather(lat, long);
 }
-$(function(){
-var location={
-            url:"https://maps.googleapis.com/maps/api/geocode/json?address=41465&key=AIzaSyBZfkXozgEve7U6AezGLYljEVMRR-EFUuo",
-            dataType:"jsonp",
-            geocode_Complete
-
-        }
 
 
+//google lat and long
+function addressLookup(city, state, address) {
+    // Create the address.
+    var addLocation = "";
+    if (address.length != 0) {
+        addLocation = address.trim();
+    }
+    else if (city.length != 0 && state != 0) {
+        addLocation = city.trim() + ", " + state;
+    }
+    else {
+        return;
 
+    }
+
+
+    //compiling the url for
+    var googleTag = "https://maps.googleapis.com/maps/api/geocode/json?address=" + addLocation + "&key=AIzaSyBZfkXozgEve7U6AezGLYljEVMRR-EFUuo";
+
+    var request = {
+        url: googleTag,
+        success: addressLookup_Complete
+    };
+
+    $.ajax(request);
+}
+
+
+
+function lookupLocation_click() {
+    var pcode = $("#address").val();
+    addressLookup("", "", pcode);
+
+}
+//*******************Click event
+$(function () {
+    $("#lookupLocation").on("click", lookupLocation_click);
 
 });
+
+
+function getWeather(lat, long) {
+    var darkSky = "https://api.darksky.net/forecast/ed7be92607845014ac1b22c8b2dcb545/" + lat + "," + long;
+    var weather = {
+        url: darkSky,
+        dataType: "jsonp",
+        success: weather_Complete
+    };
+
+    $.ajax(weather);
+}
+
+
+
+function weather_Complete(result) {
+    console.log("It is currently " + result.currently.time + ".");
+
+    var time = new Date(result.currently.time * 1000);
+    console.log(time)
+
+}
+
