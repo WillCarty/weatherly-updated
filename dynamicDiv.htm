@@ -3,7 +3,7 @@
 <head>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="weatherly.js" rel="stylesheet"></script>
+    <script type="text/javascript" src="weatherly.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
     <link type="text/css" href="weatherly.css" rel="stylesheet" />
     <!-- Latest compiled and minified CSS -->
@@ -21,11 +21,11 @@
 </head>
 
 <body>
-    
 
 
 
-    
+
+
     <div class="row col-xs-8 col-sm-6 col-md-4 col-lg-3 ">
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
@@ -39,65 +39,71 @@
 
     <div class="container">
         <div class="row ">
-<div class="container" id="newCard">
-            <div class="col-xs-8 col-sm-6 col-md-4 col-lg-3 clearCard allCards">
-                <div class="row" style=" text-align:center">
-                    <h3>@@City@@</h3>
+            <div class="container" id="newCard2">
+            </div>
+            <div class="hidden">
+            <div class="container" id="newCard">
+                <div class=" col-xs-8 col-sm-6 col-md-4 col-lg-3 clearCard allCards">
+                    <div class="row" style=" text-align:center">
+                        <h3>@@City@@</h3>
 
-                </div>
-                <div class="row" style="text-align:center">
-                    <h5>@@date/time@@</h5>
-                </div>
+                    </div>
+                    <div class="row" style="text-align:center">
+                        <h5>@@date/time@@</h5>
+                    </div>
 
-                <div class="row">
-                    <h1>
-                        @@lrgDegree@@
-                    </h1>
-                </div>
-                <div class="row" style="height:100px">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4"><img src="http://ukweather.joanpujol.cat/images/weatherkey/mo_wsunny_01.png" alt="sun/clear" width=" 80px"
-                            height="80px"></div>
-                    <div class="col-md-4"></div>
+                    <div class="row">
+                        <h1>
+                            @@lrgDegree@@
+                        </h1>
+                    </div>
+                    <div class="row" style="height:100px">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"><img src="http://ukweather.joanpujol.cat/images/weatherkey/mo_wsunny_01.png" alt="sun/clear" width=" 30px"
+                                height="30px"></div>
+                        <div class="col-md-4"></div>
 
-                </div>
-                <div class="row" style="height:87px; text-align:center">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <h2>@@cond@@</h2>
                     </div>
-                    <div class="col-md-4"></div>
+                    <div class="row" style="height:50px; text-align:center">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <h2 sytle="margin-left:3px">@@cond@@</h2>
+                        </div>
+                        <div class="col-md-4"></div>
 
-                </div>
+                    </div>
+                    <div class="row" style="height:20px"></div>
 
-                <div class="row" style="height:40px"></div>
-                <div class="row" style="border-top:2px solid white">
+                    <div class="row" style="height:40px"></div>
+                    <div class="row" style="border-top:2px solid white">
 
-                </div>
-                <div class="row">
-                    <div class="col-xs-4 col-sm-4 col-md-4  col-lg-4">
-                        <h5>@@minTemp@@</h5>
                     </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4  col-lg-4">
-                        <h5>@@rain%@@</h5>
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4  col-lg-4">
+                            <h5>@@minTemp@@</h5>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4  col-lg-4">
+                            <h5>@@rain%@@</h5>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4  col-lg-4">
+                            <h5>@@maxTemp@@</h5>
+                        </div>
                     </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4  col-lg-4">
-                        <h5>@@maxTemp@@</h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-4 col-sm-4 col-md-4  col-lg-4">
-                        <h5>@@Min@@</h5>
-                    </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4  col-lg-4">
-                        <h5>@@rainChance@@</h5>
-                    </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4  col-lg-4">
-                        <h5>@@Max@@</h5>
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4  col-lg-4">
+                            <h5>@@Min@@</h5>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4  col-lg-4">
+                            <h5>@@rainChance@@</h5>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4  col-lg-4">
+                            <h5>@@Max@@</h5>
+                        </div>
                     </div>
                 </div>
             </div>
-           </div> 
+            </div>
+            
             <!-- Card Ending-->
 
 

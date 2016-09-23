@@ -75,13 +75,14 @@ function weather_Complete(result) {
     var data = {
         time: new Date(result.currently.time * 1000),
         lrgTemp: (result.currently.temperature),
-        crntCond: (result.hourly.summary),
+        crntCond: (result.currently.summary),
         tempMin: (result.daily.data[0].temperatureMin),
         rainChance: (result.daily.data[0].precipProbability),
         maxTemp: (result.daily.data[0].temperatureMax),
         minText: ("Min"),
         rainChancetext: ("Rain Chance"),
-        maxText: ("Max")
+        maxText: ("Max"),
+        icon:(result.currently.icon)
     };
 
     postCard(data);
@@ -97,9 +98,9 @@ function generateCard(data) {
     weatherData = weatherData.replace("@@lrgDegree@@", data.lrgTemp);
     weatherData = weatherData.replace("@@cond@@", data.crntCond);
     weatherData = weatherData.replace("@@minTemp@@", data.tempMin);
-    weatherData = weatherData.replace("@@rain%@@", data.rainChance);
+    weatherData = weatherData.replace("@@rain%@@", data.rainChance + "%");
     weatherData = weatherData.replace("@@maxTemp@@", data.maxTemp);
-    weatherData = weatherData.replace("@@min@@", data.minText);
+    weatherData = weatherData.replace("@@Min@@", data.minText);
     weatherData = weatherData.replace("@@rainChance@@", data.rainChancetext);
     weatherData = weatherData.replace("@@Max@@", data.maxText);
     return weatherData;
@@ -108,7 +109,7 @@ function generateCard(data) {
 
 function postCard(weatherData) {
     var html = generateCard(weatherData);
-    $('#newCard').append(html);
+    $('#newCard2').append(html);
 
 
 
