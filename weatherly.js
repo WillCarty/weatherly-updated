@@ -6,10 +6,10 @@ var areaName;
 function addressLookup_Complete(result) {
     var lat = result.results[0].geometry.location.lat;
     var long = result.results[0].geometry.location.lng;
-    areaName = result.results[0].formatted_address;
-
+    areaName = result.results[0].address_components[1].short_name + "," +
+               result.results[0].address_components[2].short_name;
     getWeather(lat, long);
-   
+
 }
 
 
@@ -47,11 +47,13 @@ function lookupLocation_click() {
     addressLookup("", "", pcode);
 
 }
+
 //*******************Click event
 $(function () {
     $("#lookupLocation").on("click", lookupLocation_click);
 
 });
+
 //***************Call darkSky
 
 function getWeather(lat, long) {
@@ -69,72 +71,52 @@ function getWeather(lat, long) {
 
 function weather_Complete(result) {
     console.log("It is currently " + result.timezone + ".");
-    var time = new Date(result.currently.time * 1000);
-    var city = (result.timezone);
-    var lrgTemp = (result.currently.temperature);
-    var crntCond = (result.hourly.summary);
-    var tempMin = (result.daily.data[0].temperatureMin);
-    var rainChance = (result.daily.data[0].precipProbability);
-    var maxTemp = (result.daily.data[0].temperatureMax);
-    var minText = ("Min");
-    var rainChancetext = ("Rain Chance");
-    var maxText = ("Max");
 
-    //*************Texting function deleted during final check.
-    console.log(areaName);
-    console.log(lrgTemp);
-    console.log(time);
-    console.log(crntCond);
-    console.log(tempMin);
-    console.log(rainChance);
-    console.log(maxTemp);
-    console.log(minText);
-    console.log(rainChancetext);
-    console.log(maxText);
-    generateCard(city, time);
+    var data = {
+        time: new Date(result.currently.time * 1000),
+        lrgTemp: (result.currently.temperature),
+        crntCond: (result.hourly.summary),
+        tempMin: (result.daily.data[0].temperatureMin),
+        rainChance: (result.daily.data[0].precipProbability),
+        maxTemp: (result.daily.data[0].temperatureMax),
+        minText: ("Min"),
+        rainChancetext: ("Rain Chance"),
+        maxText: ("Max")
+    };
 
-    //*******
+    postCard(data);
 
-
-
-
-    //****************Click Event #2 Generate Card
-    $(function () {
-        $("#lookupLocation").on("click", generateCard())
-    });
 }
+
 //********** Generate New Card
-function generateCard(city, time, lrgTemp, crntCond, tempMin, rainChance, maxTemp, minText, rainChancetext, maxText, area) {
+function generateCard(data) {
     var weatherData = $("#newCard").html();
 
-    weatherData = weatherData.replace("@@City@@", area);
-    weatherData = weatherData.replace("@@date/time@@", time);
-    weatherData = weatherData.replace("@@lrgDegree@@", lrgTemp);
-    weatherData = weatherData.replace("@@cond@@", crntCond);
-    weatherData = weatherData.replace("@@minTemp@@", tempMin);
-    weatherData = weatherData.replace("@@rain%@@", rainChance);
-    weatherData = weatherData.replace("@@maxTemp@@", maxTemp);
-    weatherData = weatherData.replace("@@min@@", minText);
-    weatherData = weatherData.replace("@@rainChance@@", rainChancetext);
-    weatherData = weatherData.replace("@@Max@@", maxText);
-
-    postGeneratedcard();
-
+    weatherData = weatherData.replace("@@City@@", areaName);
+    weatherData = weatherData.replace("@@date/time@@", data.time);
+    weatherData = weatherData.replace("@@lrgDegree@@", data.lrgTemp);
+    weatherData = weatherData.replace("@@cond@@", data.crntCond);
+    weatherData = weatherData.replace("@@minTemp@@", data.tempMin);
+    weatherData = weatherData.replace("@@rain%@@", data.rainChance);
+    weatherData = weatherData.replace("@@maxTemp@@", data.maxTemp);
+    weatherData = weatherData.replace("@@min@@", data.minText);
+    weatherData = weatherData.replace("@@rainChance@@", data.rainChancetext);
+    weatherData = weatherData.replace("@@Max@@", data.maxText);
     return weatherData;
+
+}
+
+function postCard(weatherData) {
+    var html = generateCard(weatherData);
+    $('#newCard').append(html);
+
 
 
 }
 
 
 
-function postGeneratecard() {
-    console.log("test");
 
-};
-
-                                    // The divs will automatically wrap because of Bootstrap knowing it's a col-md-3.
-                                //  var html = generateCard(sampleData);
-                                    //$("#cards").append(html);
 
 
 
