@@ -1,0 +1,32 @@
+@@City@@
+@@date/time@@
+@@lrgDegree@@
+@@cond@@
+@@minTemp@@
+@@rain%@@
+@@maxTemp@@
+@@min@@
+@@rainChance@@
+@@Max@@
+
+
+"hourly": {
+    "summary": "Clear throughout the day.",
+    "icon": "clear-day",
+    "data": [
+      {
+        "time": 1474570800,
+        "summary": "Clear",
+        "icon": "clear-day",
+        "precipIntensity": 0,
+        "precipProbability": 0,
+        "temperature": 86,
+        "apparentTemperature": 86.69,
+        "dewPoint": 62.44,
+        "humidity": 0.45,
+        "windSpeed": 2.9,
+        "windBearing": 62,
+        "visibility": 10,
+        "cloudCover": 0,
+        "pressure": 1017.41,
+        "ozone": 268.9

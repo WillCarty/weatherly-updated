@@ -64,10 +64,31 @@ function getWeather(lat, long) {
 
 
 function weather_Complete(result) {
-    console.log("It is currently " + result.currently.time + ".");
+    console.log("It is currently " + result.timezone + ".");
+var time= new Date(result.currently.time * 1000);
+    console.log(time);
+    console.log("It is currently " + result.currently.temperature + ".");
+    console.log("It is currently " + result.hourly.summary + ".");
+    console.log("It is currently " + result.daily.data[0].temperatureMin + ".");
+    console.log("It is currently " + result.daily.data[0].precipProbability+ ".");
+    console.log("It is currently " + result.daily.data[0].temperatureMax+ ".");
+  var city= (result.timezone);
+  var lrgTemp=(result.currently.temperature);
+  var crntCond=(result.hourly.summary);
+  var tempMin=(result.daily.data[0].temperatureMin);
+  var rainChance=(result.daily.data[0].precipProbability);
+  console.log(city);
+  console.log(lrgTemp);
 
-    var time = new Date(result.currently.time * 1000);
-    console.log(time)
 
-}
+
+        
+    }
+
+
+
+    
+    
+
+
 
