@@ -74,11 +74,11 @@ function weather_Complete(result) {
 
     var data = {
         time: new Date(result.currently.time * 1000),
-        lrgTemp: (result.currently.temperature),
+        lrgTemp: Math.round((result.currently.temperature)) + "&deg",
         crntCond: (result.currently.summary),
-        tempMin: (result.daily.data[0].temperatureMin),
+        tempMin: Math.round((result.daily.data[0].temperatureMin)) + "&deg",
         rainChance: (result.daily.data[0].precipProbability),
-        maxTemp: (result.daily.data[0].temperatureMax),
+        maxTemp: Math.round ((result.daily.data[0].temperatureMax)) + "&deg",
         minText: ("Min"),
         rainChancetext: ("Rain Chance"),
         maxText: ("Max"),
@@ -86,6 +86,56 @@ function weather_Complete(result) {
     };
 
     postCard(data);
+    chooseCard(data);
+}
+
+//************Background Switch
+function chooseCard(data){
+
+var icon= (data.icon);
+ switch(icon){
+case "clear-day":  {$("#weatherCard").addClass("clearCard");
+                     break
+}                 
+                     
+case "clear-night": {$("#weatherCard").addClass("clearNightcard");
+                     break
+}
+                     
+case "rain":       {$("#weatherCard").addClass("rainCard"); 
+                     break
+}             
+                     
+case "snow":       {$("#weatherCard").addClass("snowCard");
+                     break
+}               
+                    
+case "sleet":      {$("#weatherCard").addClass("sleetCard");
+                     break
+}                     
+                    
+case "wind":       {$("#weatherCard").addClass("windCard");
+                     break
+}
+case "fog":        {$("#weatherCard").addClass("fogCard");
+                     break
+}              
+
+case "cloudy":      {$("#weatherCard").addClass("cloudyCard");
+                     break
+}
+
+case "partly_cloudy_day":      {$("#weatherCard").addClass("partCloudyamCard");
+                     break 
+}
+case "partly_cloudy_night":      {$("#weatherCard").addClass("partCloudypmCard");
+                     break 
+}
+
+ }
+
+
+console.log(icon);
 
 }
 
@@ -114,17 +164,18 @@ function postCard(weatherData) {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//***********Hide button
+$(document).ready(function () {
+    $(document).on('mouseenter', '.divbutton', function () {
+        $(this).find(":button").show();
+    }).on('mouseleave', '.divbutton', function () {
+        $(this).find(":button").hide();
+    });
+});
+(function(){ $('#cardRemove').on('click', removeCard()
+     
+             
+)})
+function removeCard(){
+    $("#weatherCard").remove()
+}
